@@ -21,7 +21,7 @@ from homeassistant.util.percentage import (
     percentage_to_ordered_list_item,
 )
 from . import DeviceData
-from .controller import get_controller
+from .controller import get_controller, get_controller_schema
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -44,7 +44,7 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
         vol.Optional(CONF_UNIQUE_ID): cv.string,
         vol.Optional(CONF_NAME, default=DEFAULT_NAME): cv.string,
         vol.Required(CONF_DEVICE_CODE): cv.positive_int,
-        vol.Required(CONF_CONTROLLER_DATA): cv.string,
+        vol.Required(CONF_CONTROLLER_DATA): get_controller_schema(vol, cv),
         vol.Optional(CONF_DELAY, default=DEFAULT_DELAY): cv.positive_float,
         vol.Optional(CONF_POWER_SENSOR): cv.entity_id,
         vol.Optional(
@@ -64,13 +64,7 @@ async def async_setup_platform(
         device_data := await DeviceData.load_file(
             config.get(CONF_DEVICE_CODE),
             "fan",
-            [
-                "manufacturer",
-                "supportedModels",
-                "supportedController",
-                "commandsEncoding",
-                "speed",
-            ],
+            {},
             hass,
         )
     ):
@@ -136,7 +130,6 @@ class SmartIRFan(FanEntity, RestoreEntity):
             self._supported_controller,
             self._commands_encoding,
             self._controller_data,
-            self._delay,
         )
 
     async def async_added_to_hass(self):
@@ -323,7 +316,9 @@ class SmartIRFan(FanEntity, RestoreEntity):
                 self.async_write_ha_state()
 
             except Exception as e:
-                _LOGGER.exception(e)
+                _LOGGER.exception(
+                    "Exception raised in the in the _send_command '%s'", e
+                )
 
     async def _async_power_sensor_changed(
         self, event: Event[EventStateChangedData]
