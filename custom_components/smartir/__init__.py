@@ -5,7 +5,11 @@ import os.path
 import hashlib
 import json
 
-from .controller_const import CONTROLLER_SUPPORT
+from .controller_const import (
+    CONTROLLER_SUPPORT,
+    CONF_CODE_ON_NAME,
+    CONF_CODE_REGULAR_NAME,
+)
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -442,7 +446,12 @@ class DeviceData:
                     return False
             elif level == "temperature":
                 for temp in commands.keys():
-                    if not (isinstance(commands[temp], str) and commands[temp]):
+                    if not (
+                        commands[temp]
+                        and isinstance(commands[temp], dict)
+                        and CONF_CODE_ON_NAME in commands[temp]
+                        and CONF_CODE_REGULAR_NAME in commands[temp]
+                    ) and not (commands[temp] and isinstance(commands[temp], str)):
                         _LOGGER.error(
                             "Invalid %s device JSON file '%s': invalid 'temperature' '%s' command value '%s'.",
                             device_class,
@@ -452,7 +461,8 @@ class DeviceData:
                         )
                         return False
 
-                    string = commands[temp]
+                    # string = commands[temp]
+                    string = json.dumps(commands[temp])
                     result = hashlib.md5(string.encode())
                     hash = result.hexdigest()
                     if hash in commands_used:

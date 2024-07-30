@@ -1,6 +1,11 @@
 import asyncio
 import logging
 
+from .controller_const import (
+    CONF_CODE_ON_NAME,
+    CONF_CODE_REGULAR_NAME,
+)
+
 import voluptuous as vol
 from numbers import Number
 
@@ -50,9 +55,6 @@ CONF_POWER_SENSOR_DELAY = "power_sensor_delay"
 CONF_POWER_SENSOR_RESTORE_STATE = "power_sensor_restore_state"
 
 PRECISION_DOUBLE = 2
-
-CONF_CODE_ON_NAME = "on"
-CONF_CODE_REGULAR_NAME = "regular"
 
 PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
     {
