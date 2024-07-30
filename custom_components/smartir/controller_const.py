@@ -44,3 +44,6 @@ CONTROLLER_CONF = {
     "ZHA_COMMAND": "zha_command",
     "ZHA_COMMAND_TYPE": "zha_command_type",
 }
+
+CONF_CODE_ON_NAME = "on"
+CONF_CODE_REGULAR_NAME = "regular"
