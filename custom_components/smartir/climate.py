@@ -594,7 +594,13 @@ class SmartIRClimate(ClimateEntity, RestoreEntity):
                     elif "off" in self._commands.keys() and isinstance(
                         self._commands["off"], str
                     ):
-                        if (
+                        if self._state == STATE_OFF:
+                            # prevent to resend 'off' command if device is already off
+                            _LOGGER.debug(
+                                "Device is already in requested '%s' state skipping sending 'off' command",
+                                self._state,
+                            )
+                        elif (
                             "on" in self._commands.keys()
                             and isinstance(self._commands["on"], str)
                             and self._commands["on"] == self._commands["off"]
