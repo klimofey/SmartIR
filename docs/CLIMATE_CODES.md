@@ -222,6 +222,7 @@ The following are the code files created by the amazing people in the community.
 <tr ><td class="file-td td_text">1944.json</td><td class="manufacturer-td td_text">Electra</td><td class="models-td td_text">Electra Platinum Plus Inverter</td><td class="controller-td td_text">Broadlink</td></tr>
 <tr ><td class="file-td td_text">1946.json</td><td class="manufacturer-td td_text">Electra</td><td class="models-td td_text">RC-3</td><td class="controller-td td_text">Broadlink</td></tr>
 <tr ><td class="file-td td_text">1947.json</td><td class="manufacturer-td td_text">Electra</td><td class="models-td td_text">Electra</td><td class="controller-td td_text">Broadlink</td></tr>
+<tr ><td class="file-td td_text">1948.json</td><td class="manufacturer-td td_text">Electra</td><td class="models-td td_text">RC-3</td><td class="controller-td td_text">UFO-R11</td></tr>
 <tr ><td class="file-td td_text">1960.json</td><td class="manufacturer-td td_text">AUX</td><td class="models-td td_text">Unknown</td><td class="controller-td td_text">Broadlink</td></tr>
 <tr ><td class="file-td td_text">1961.json</td><td class="manufacturer-td td_text">AUX</td><td class="models-td td_text">AUX FREEDOM AUX-09FH</td><td class="controller-td td_text">Broadlink</td></tr>
 <tr ><td class="file-td td_text">1962.json</td><td class="manufacturer-td td_text">AUX</td><td class="models-td td_text">iClima ICI-09A</td><td class="controller-td td_text">Broadlink</td></tr>
