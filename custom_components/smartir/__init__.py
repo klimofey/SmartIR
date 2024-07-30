@@ -461,7 +461,8 @@ class DeviceData:
                         )
                         return False
 
-                    string = commands[temp]
+                    # string = commands[temp]
+                    string = json.dumps(commands[temp])
                     result = hashlib.md5(string.encode())
                     hash = result.hexdigest()
                     if hash in commands_used:
