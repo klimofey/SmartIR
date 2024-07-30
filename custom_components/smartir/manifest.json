@@ -7,5 +7,5 @@
   "iot_class": "assumed_state",
   "issue_tracker": "https://github.com/klimofey/SmartIR/issues",
   "requirements": ["aiofiles>=0.6.0"],
-  "version": "1.17.17"
+  "version": "1.17.21"
 }
